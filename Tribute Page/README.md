@@ -1,7 +1,7 @@
 Tribute Page of Kobe Byrant
 
 
-Follow as the instruction below from the FreeCodeCamp
+Follow the instruction below from the FreeCodeCamp
 
 
 
