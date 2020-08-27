@@ -3,426 +3,7 @@
 <head>
 	<meta charset = "UTF-8">
 </head>
-<!-- <style>
-/* Custom properties/variables  */
-:root {
-  --main-white: #f0f0f0;
-  --main-red: #be3144;
-  --main-blue: #45567d;
-  --main-gray: #303841;
-}
 
-/* Base reset */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-/* box-sizing and font sizing */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-
-  /* Set font size for easy rem calculations
-   * default document font size = 16px, 1rem = 16px, 100% = 16px
-   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
-  */
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-
-/* A few media query to set some font sizes at different screen sizes.
- * This helps automate a bit of responsiveness.
- * The trick is to use the rem unit for size values, margin and padding.
- * Because rem is relative to the document font size
- * when we scale up or down the font size on the document
- * it will affect all properties using rem units for the values.
-*/
-
-/* I am using the em unit for breakpoints
- * The calculation is the following
- * screen size divided by browser base font size
- * As an example: a breakpoint at 980px
- * 980px / 16px = 61.25em
-*/
-
-/* 1200px / 16px = 75em */
-@media (max-width: 75em) {
-  html {
-    font-size: 60%;
-  }
-}
-
-/* 980px / 16px = 61.25em */
-@media (max-width: 61.25em) {
-  html {
-    font-size: 58%;
-  }
-}
-
-/* 460px / 16px = 28.75em */
-@media (max-width: 28.75em) {
-  html {
-    font-size: 55%;
-  }
-}
-
-/* Base styles */
-
-body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem; /* 18px */
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--main-white);
-}
-
-h1,
-h2 {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 4.2rem;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: var(--main-white);
-}
-
-img {
-  display: block;
-  width: 100%;
-}
-
-/* nav */
-
-.nav {
-  display: flex;
-  padding: -10px;
-  justify-content: flex-end;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--main-red);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
-  z-index: 10;
-}
-
-.nav-list {
-  display: flex;
-  margin-right: 2rem;
-}
-
-@media (max-width: 28.75em) {
-  .nav {
-    justify-content: center;
-  }
-
-  .nav-list {
-    margin: 0 1rem;
-  }
-}
-
-.nav-list a {
-  display: block;
-  font-size: 2.2rem;
-  padding: 2rem;
-}
-
-.nav-list a:hover {
-  background: var(--main-blue);
-}
-
-/* Welcome section */
-
-.welcome-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: #000;
-  background-image: linear-gradient(75deg, #3a3d40 0%, #181719 100%);
-}
-
-.welcome-section > p {
-  font-size: 2rem;
-  font-weight: 200;
-  font-style: italic;
-  color: var(--main-red);
-}
-
-/* Projects section */
-
-.projects-section {
-  text-align: center;
-  padding: 10rem 2rem;
-  background: var(--main-blue);
-}
-
-.projects-section-header {
-  max-width: 640px;
-  margin: 0 auto 6rem auto;
-  border-bottom: 0.2rem solid var(--main-white);
-}
-
-@media (max-width: 28.75em) {
-  .projects-section-header {
-    font-size: 4rem;
-  }
-}
-
-/* "Automagic" image grid using no media queries */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 4rem;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  margin-bottom: 6rem;
-}
-
-@media (max-width: 30.625em) {
-  .projects-section {
-    padding: 6rem 1rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.project {
-  background: var(--main-gray);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
-}
-
-.code {
-  color: var(--main-gray);
-  transition: color 0.3s ease-out;
-}
-
-.project:hover .code {
-  color: #ff7f50;
-}
-
-.project-image {
-  height: calc(100% - 6.8rem);
-  width: 100%;
-  object-fit: cover;
-}
-
-.project-title {
-  font-size: 2rem;
-  padding: 2rem 0.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 2px;
-}
-
-.btn-show-all {
-  font-size: 2rem;
-  background: var(--main-gray);
-  transition: background 0.3s ease-out;
-}
-
-.btn-show-all:hover {
-  background: var(--main-red);
-}
-
-.btn-show-all:hover > i {
-  transform: translateX(2px);
-}
-
-.btn-show-all > i {
-  margin-left: 10px;
-  transform: translateX(0);
-  transition: transform 0.3s ease-out;
-}
-
-/* Contact section */
-
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  height: 80vh;
-  padding: 0 2rem;
-  background: var(--main-gray);
-}
-
-.contact-section-header > h2 {
-  font-size: 1.5rem;
-}
-
-@media (max-width: 28.75em) {
-  .contact-section-header > h2 {
-    font-size: 4rem;
-  }
-}
-
-.contact-section-header > p {
-  font-style: italic;
-  font-size: 1rem;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 980px;
-  margin-top: 4rem;
-  flex-wrap: wrap;
-}
-
-.contact-details {
-  font-size: 2.4rem;
-  text-shadow: 2px 2px 1px #1f1f1f;
-  transition: transform 0.3s ease-out;
-}
-
-.contact-details:hover {
-  transform: translateY(8px);
-}
-
-/* Footer */
-
-footer {
-  font-weight: 100;
-  font-size: 10px;
-  display: flex;
-  justify-content: stretch;
-  padding: 10px;
-  background: #303841;
-}
-
-footer > p {
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-}
-
-footer i {
-  vertical-align: middle;
-}
-
-@media (max-width: 28.75em) {
-  footer {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-	</style>
-	<body>
-		<nav id = "navbar" class = "nav">
-			<ul class = "nav-list">
-				<li>
-					<a href = "#Welcome-section">About</a>
-				</li>
-				<li>
-					<a href = "#Projects">Work</a>
-				</li>
-				<li>
-					<a href = "#Contact">Contact</a>
-				</li>
-			</ul>
-		</nav>
-
-		<section id = "Welcome-section" class = "Welcome-section">
-			
-			<h1>Hey, I am Yue Fang and you can call me Andrew as you wish.</h1>
-			<p>Stevens Institute of Technology major in Electrical Engineering		2016~2018</p>
-			<p>Beijing Information Science and Technology University major in Automation(北京信息科技大学)		2010-2014</p>
-			<p>UnitedHealth Group		2019~2020</p>
-			<p>Silvermoon HTC Consulting, LLC		2018~2019</p>
-
-			  <section id = "projects" class = "projects-section">
-				<h2 class = "projects-section-header">These are some of my projects</h2>
-				<div class = "projects-grid">
-					<a href = "" target = "_blank" class = "project project-tile">
-						<img class = "project-image" src = "http://a1.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/bqQfVz5yrrGYSXMvKr.cqaOTXadh.Nm0IcsrSRLwzCQ21dmdx58NtGSVi8zZD8W4IwqGbjCUS7WUPPWY3txbJiH1MsjY1UiEaV2NUaKgzF4!/b&ek=1&kp=1&pt=0&bo=eAUpBngFKQYDFzI!&tl=1&vuin=827615933&tm=1598414400&sce=60-2-2&rf=viewer_4" alt = "project tribute page"/>
-						<p class = "project-title">
-							<span class="code">&lt;</span>
-Tribute Page
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
-<a href = "" target = "_blank" class = "project project-tile">
-<img class = "project-image" src = "http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEDlojUFoaMrTsmrnEr3f*WgSMK9bOvnFCbxQp8qJHDdx9GECbFCYQWDSgEkgfsKHg0dTdE6*x4L7KgD1*INCmUg!/b&bo=pQWAAqYNDAYDN5E!&rf=viewer_4" alt = "project survey form"/>
-<p class = "project-title">
-	<span class = "code">&lt;</span>
-LeetCode Survey Form
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
-<a href = "" target = "_blank" class = "project project-tile">
-	<img class = "project-image" src = "http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEK2ldrEV.hTS81W1ZhKbay4.GUvg.nwQY.ne2y*kYZoPk4MdRZQQZw4MAC2Fv2f9H88HtK5Vc4vI3leOIXnw5Zg!/b&bo=lQ0MBZUNDAUDJwI!&rf=viewer_4" alt = "project Product Landing Page of Trombones">
-	<p class = "project-title">
-		<span class="code">&lt;</span>
-Product Landing Page of Trombones
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
-<a href = "" target = "_blank" class = "project project-title">
-	<img class = "project-image" src = "http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEIs6FDNpo3QOtysFza0eKlR1eGPDpWy.YT5ZCyKU5c1GMHjuYrV41DFS3Ctg.rMiBzyudQos1pTSxA9taUXWRMg!/b&bo=yg3TBMoN0wQDR2I!&rf=viewer_4" alt = "project Technical Documenation of Java">
-	<p class = "project-title">
-		<span class="code">&lt;</span>
-Technical Documenation of Java
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
-</div>
-<a href = "https://codepen.io/yfang10" class = "button button-show-all" target = "_blank">Show all<i class="fas fa-chevron-right"></i></a>
-</section>
-
-<section id = "contact" class = "contact-section">
-	<div class = "contact-section-header">
-		<h2>Please feel free to contact with me if you have any questions.</h2>
-		<p>Learning Code needs patience and work hard.</p>
-	</div>
-	<div class = "contact-links">
-		<a href = "https://www.linkedin.com/in/yue-fang-92745118a/" target = "_blank" class = "button contact-details"><i class="fab fa-linkedin"></i>LinkedIn</a>
-		<a href = "https://github.com/yfang10" target = "_blank" class = "button contact-details"><i class="fab fa-github"></i>github</a>
-		<a href = "https://www.zhihu.com/people/fang-yue-41-90" target = "_blank" class = "button contact-details"><i class="fab fa-zhihu-square"></i>ZhiHu</a>
-		<a href = "mailto: yue930315@gmail.com/" target = "_blank" class = "button contact-details"><i class="fas fa-at"></i>Email</a>
-		<a href = "tel: 19970198767" target = "_blank" class = "button contact-details"><i class="fas fa-mobile-alt"></i>Phone</a>
-	</div>
-</section>
-
-<footer>
-	<p>This is my personal portfolio. All the projects and contact details given belongs to Yue Fang.</p>
-	<p>
-		&copy; from 2020  Yue Fang(Andrew)<i class="fab fa-free-code-camp"></i>
-	</p>
-</footer>
- -->
  <style>
 /* Custom properties/variables  */
 :root {
@@ -448,55 +29,34 @@ Technical Documenation of Java
 html {
   box-sizing: border-box;
 
-  /* Set font size for easy rem calculations
-   * default document font size = 16px, 1rem = 16px, 100% = 16px
-   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
-  */
-  font-size: 62.5%;
+  font-size: 10px;
   scroll-behavior: smooth;
 }
 
-/* A few media query to set some font sizes at different screen sizes.
- * This helps automate a bit of responsiveness.
- * The trick is to use the rem unit for size values, margin and padding.
- * Because rem is relative to the document font size
- * when we scale up or down the font size on the document
- * it will affect all properties using rem units for the values.
-*/
 
-/* I am using the em unit for breakpoints
- * The calculation is the following
- * screen size divided by browser base font size
- * As an example: a breakpoint at 980px
- * 980px / 16px = 61.25em
-*/
-
-/* 1200px / 16px = 75em */
-@media (max-width: 75em) {
+@media (max-width: 1200px) {
   html {
     font-size: 60%;
   }
 }
 
-/* 980px / 16px = 61.25em */
-@media (max-width: 61.25em) {
+@media (max-width: 980px) {
   html {
     font-size: 58%;
   }
 }
 
-/* 460px / 16px = 28.75em */
-@media (max-width: 28.75em) {
+@media (max-width: 460px) {
   html {
     font-size: 55%;
   }
 }
 
-/* Base styles */
+
 
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem; /* 18px */
+  font-size: 18px; 
   font-weight: 400;
   line-height: 2.5;
   color: var(--main-red);
@@ -550,13 +110,13 @@ img {
   margin-right: 20px;
 }
 
-@media (max-width: 28.75em) {
+@media (max-width: 460px) {
   .nav {
     justify-content: center;
   }
 
   .nav-list {
-    margin: 0 1rem;
+    margin: 0 10px;
   }
 }
 
@@ -604,7 +164,7 @@ img {
   border-bottom: 2px solid var(--main-white);
 }
 
-@media (max-width: 28.75em) {
+@media (max-width: 460px) {
   .projects-section-header {
     font-size: 40px;
   }
@@ -613,7 +173,7 @@ img {
 /* "Automagic" image grid using no media queries */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 50%);
   grid-gap: 40px;
   width: 100%;
   max-width: 1280px;
@@ -621,7 +181,7 @@ img {
   margin-bottom: 60px;
 }
 
-@media (max-width: 30.625em) {
+@media (max-width: 490px) {
   .projects-section {
     padding: 60px 10px;
   }
@@ -749,7 +309,7 @@ footer i {
   vertical-align: middle;
 }
 
-@media (max-width: 28.75em) {
+@media (max-width: 460px) {
   footer {
     flex-direction: column;
     text-align: center;
@@ -788,53 +348,38 @@ footer i {
 <h2 class="projects-section-header">These are some of my projects</h2>
 <div class="projects-grid">
 <a href="https://codepen.io/freeCodeCamp/full/zNqgVx" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/tribute.jpg" alt="project" />
+<img class="project-image" src="http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/bqQfVz5yrrGYSXMvKr.cqaOTXadh.Nm0IcsrSRLwzCQ21dmdx58NtGSVi8zZD8W4IwqGbjCUS7WUPPWY3txbJiH1MsjY1UiEaV2NUaKgzF4!/b&bo=eAUpBngFKQYDByI!&rf=viewer_4" alt="project Trigute Page" />
 <p class="project-title">
 <span class="code">&lt;</span>
-Tribute Page
+Tribute Page of Kobe Byrant
 <span class="code">&#47;&gt;</span>
 </p>
 </a>
-<a href="https://codepen.io/freeCodeCamp/full/qRZeGZ" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/random-quote-machine.png" alt="project" />
+<a href="https://codepen.io/yfang10/pen/rNeyvwN" target="_blank" class="project project-tile">
+<img class="project-image" src="http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEIs6FDNpo3QOtysFza0eKlR1eGPDpWy.YT5ZCyKU5c1GMHjuYrV41DFS3Ctg.rMiB4cLYsq83MAC3.H9bpVojSE!/b&bo=yg3TBMoN0wQDR2I!&rf=viewer_4" alt="project Technical Documentation" />
 <p class="project-title">
 <span class="code">&lt;</span>
-Random Quote Machine
+Technical Documentation of Java
 <span class="code">&#47;&gt;</span>
 </p>
 </a>
-<a href="https://codepen.io/freeCodeCamp/full/wgGVVX" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/calc.png" alt="project" />
+<a href="https://codepen.io/yfang10/pen/bGpBrGz" target="_blank" class="project project-tile">
+<img class="project-image" src="http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEK2ldrEV.hTS81W1ZhKbay4.GUvg.nwQY.ne2y*kYZoPk4MdRZQQZw4MAC2Fv2f9HzwgJPnN0wnyc.6HTXeZnAE!/b&bo=lQ0MBZUNDAUDJwI!&rf=viewer_4" alt="project Product Landing Page" />
 <p class="project-title">
 <span class="code">&lt;</span>
-JavaScript Calculator
+Product Landing Page of Trombones
 <span class="code">&#47;&gt;</span>
 </p>
 </a>
-<a href="https://codepen.io/freeCodeCamp/full/mVEJag" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/map.jpg" alt="project" />
+<a href="https://codepen.io/yfang10/pen/xxVEpmJ" target="_blank" class="project project-tile">
+<img class="project-image" src="http://m.qpic.cn/psc?/V510Mbas1LoPER3wlecy0wsIgZ1omUDC/TmEUgtj9EK6.7V8ajmQrEDlojUFoaMrTsmrnEr3f*WgSMK9bOvnFCbxQp8qJHDdx9GECbFCYQWDSgEkgfsKHg.snNqaCKRdoKqBLDj6dRpQ!/b&bo=pQWAAqYNDAYDN5E!&rf=viewer_4" alt="project Survey Form" />
 <p class="project-title">
 <span class="code">&lt;</span>
-Map Data Across the Globe
+LeetCode Survey Form
 <span class="code">&#47;&gt;</span>
 </p>
 </a>
-<a href="https://codepen.io/freeCodeCamp/full/wGqEga" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/wiki.png" alt="project" />
-<p class="project-title">
-<span class="code">&lt;</span>
-Wikipedia Viewer
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
-<a href="https://codepen.io/freeCodeCamp/full/KzXQgy" target="_blank" class="project project-tile">
-<img class="project-image" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/images/tic-tac-toe.png" alt="project" />
-<p class="project-title">
-<span class="code">&lt;</span>
-Tic Tac Toe Game
-<span class="code">&#47;&gt;</span>
-</p>
-</a>
+
 </div>
 <a href="https://codepen.io/FreeCodeCamp/" class="btn btn-show-all" target="_blank">Show all<i class="fas fa-chevron-right"></i
   ></a>
