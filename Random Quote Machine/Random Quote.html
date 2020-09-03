@@ -1,0 +1,46 @@
+<DOCTYPE! html>
+<html>
+<head>
+<meta charset = "UTF-8">
+
+<style>
+</style>
+<script>
+	window.console = window.console || function(t) {};
+</script>
+<script>
+	if(document.location.search.match(/type = embed/gi)){
+		window.parent.postMessage("resize", "*");
+	}
+</script>
+</head>
+
+<body translate = "no">
+	<div id = "wrapper">
+		<div id = "quote-box">
+			<div class = "quote-text">
+				<i class = "fa fa-quote-left"></i><span id = "text"></span>
+			</div>
+			<div class = "quote-author">
+				<span id = "author"></span>
+			</div>
+			<div class = "buttons">
+				<a class = "button" id = "tweet-quote" title = "Tweet this quote!" target = "_blank">
+					<i class = "fa fa-twitter"></i>
+				</a>
+				<a class = "button" id = "tumblr-quote" title = "Tweet this quote!" title = "Post this quote on tumblr!" target = "_blank">
+					<i class = "fa fa-tumblr"></i>
+				</a>
+				<button class = "button" id = "new-quote">New quote</button>
+			</div>
+		</div>
+		<div class = "footer">by<a href = "https://codepen.io/yfang10">yfang10</a></div>
+	</div>
+	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
+<script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
+<script id="rendered-js"></script>
+</body>
+</html>
+
