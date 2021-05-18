@@ -1,1 +1,1 @@
-# Projects-of-FreeCodeCamp
+# Static Pages Projects
